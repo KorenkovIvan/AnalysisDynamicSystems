@@ -65,6 +65,14 @@ public abstract class DynamicSystem
     /// <returns>Значение производной в векторе </returns>
     public abstract float Fz(Vector3 vector);
 
+    /// <summary>
+    /// Получить следующий вектор
+    /// (Частное интегрирование методоом Рунге-Кутта 4-го порядка)
+    /// </summary>
+    /// <param name="vector">Начальная точка интегрирования</param>
+    /// <param name="steap">Шаг интегрирования</param>
+    /// <returns>Значение после интегрирования</returns>
+    /// <exception cref="ArgumentException">Значение параметра steap не корректон</exception>
     public Vector3 GetNextVector(Vector3 vector, float steap)
     {
         if (
@@ -97,6 +105,10 @@ public abstract class DynamicSystem
         vector.Z += steap / 6 * (k[0, 2] + 2 * k[1, 2] + 2 * k[2, 2] + k[3, 2]);
 
         return vector;
-
     }
+    /// <summary>
+    /// Получить Начальный вектор
+    /// </summary>
+    /// <returns>Вектор для начала интегрирования</returns>
+    public abstract Vector3 GetStartVector();
 }
