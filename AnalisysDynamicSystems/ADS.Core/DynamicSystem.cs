@@ -73,6 +73,7 @@ public abstract class DynamicSystem
     /// <param name="steap">Шаг интегрирования</param>
     /// <returns>Значение после интегрирования</returns>
     /// <exception cref="ArgumentException">Значение параметра steap не корректон</exception>
+    // ReSharper disable once UnusedMember.Global
     public Vector3 GetNextVector(Vector3 vector, float steap)
     {
         if (
