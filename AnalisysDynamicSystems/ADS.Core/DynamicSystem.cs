@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using System.Numerics;
 
 namespace ADS.Core;
 
@@ -12,6 +13,8 @@ public abstract class DynamicSystem
     /// Наименование Динамической системы
     /// </summary>
     public string Name { get; set; }
+
+    #region Параметры
 
     private Dictionary<string, float> _parametrs;
     public float this[string parametrName]
@@ -39,4 +42,25 @@ public abstract class DynamicSystem
             }
         }
     }
+
+    #endregion
+
+    /// <summary>
+    /// Частная производная по оси Ox
+    /// </summary>
+    /// <param name="vector">Вектор</param>
+    /// <returns>Значение производной в векторе </returns>
+    public abstract float Fx(Vector3 vector);
+    /// <summary>
+    /// Частная производная по оси Oy
+    /// </summary>
+    /// <param name="vector">Вектор</param>
+    /// <returns>Значение производной в векторе </returns>
+    public abstract float Fy(Vector3 vector);
+    /// <summary>
+    /// Частная производная по оси Oz
+    /// </summary>
+    /// <param name="vector">Вектор</param>
+    /// <returns>Значение производной в векторе </returns>
+    public abstract float Fz(Vector3 vector);
 }
