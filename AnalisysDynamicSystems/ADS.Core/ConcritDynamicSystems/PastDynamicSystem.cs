@@ -1,24 +1,41 @@
 ﻿using System.Numerics;
 
 namespace ADS.Core.ConcritDynamicSystems;
-
 public class PastDynamicSystem: DynamicSystem
 {
-    
-    public override float Fx(Vector3 vector) => vector.X * this[""];
+    private const string NAME_DYNAMIC_SYSTEM 
+        = "Простая динамическая система";
 
-    public override float Fy(Vector3 vector)
-    {
-        throw new NotImplementedException();
-    }
+    #region Дефолтное значение параметров
 
-    public override float Fz(Vector3 vector)
+    public static readonly Parametr K1 = new()
     {
-        throw new NotImplementedException();
-    }
+        Name = nameof(K1),
+        Value = 1f,
+    };
+    public static readonly Parametr K2 = new()
+    {
+        Name = nameof(K2),
+        Value = 1f,
+    };
+    public static readonly Parametr K3 = new()
+    {
+        Name = nameof(K3),
+        Value = 1f,
+    };
 
-    public override Vector3 GetStartVector()
-    {
-        throw new NotImplementedException();
-    }
+    #endregion
+
+    #region Динамическая система
+
+    public override float Fx(Vector3 vector) => vector.X * this[nameof(K1)];
+    public override float Fy(Vector3 vector) => vector.Y * this[nameof(K2)];
+    public override float Fz(Vector3 vector) => vector.Z * this[nameof(K3)];
+
+    #endregion
+
+    public override Vector3 GetStartVector() => new Vector3(1f, 1f, 1f);
+
+    public PastDynamicSystem() 
+        : base(NAME_DYNAMIC_SYSTEM, K1, K2, K3) { }
 }
