@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADS.Core", "ADS.Core\ADS.Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADS.Core.Test", "ADS.Core.Test\ADS.Core.Test.csproj", "{2C9A1394-382E-43A0-8194-FC1FD9B550D7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StartConsole", "StartConsole\StartConsole.csproj", "{DCE7B0BB-20F1-4212-8E20-C64FF5C21293}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{2C9A1394-382E-43A0-8194-FC1FD9B550D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C9A1394-382E-43A0-8194-FC1FD9B550D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C9A1394-382E-43A0-8194-FC1FD9B550D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCE7B0BB-20F1-4212-8E20-C64FF5C21293}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCE7B0BB-20F1-4212-8E20-C64FF5C21293}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCE7B0BB-20F1-4212-8E20-C64FF5C21293}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCE7B0BB-20F1-4212-8E20-C64FF5C21293}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
