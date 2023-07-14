@@ -1,8 +1,9 @@
 ﻿using System.Numerics;
+using ADS.Core.ConcritCalculate.Niding;
 
 namespace ADS.Core.ConcritDynamicSystems;
 
-public class LorenzDynamicSystem: DynamicSystem
+public class LorenzDynamicSystem: DynamicSystem, INiding
 {
     private const string NAME_DYNAMIC_SYSTEM 
         = "Система Лорнеца";
@@ -35,4 +36,8 @@ public class LorenzDynamicSystem: DynamicSystem
     public override float Fz(Vector3 vector) => vector.X * vector.Y - this[nameof(B)] * vector.Z;
 
     public override Vector3 GetStartVector() => new(0.01f, 0f, 0f);
+    public bool IsCritical(Vector3 startVector, Vector3 endVector)
+    {
+        return Fy(startVector) * Fy(endVector) < 0;
+    }
 }

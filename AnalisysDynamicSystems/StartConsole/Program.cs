@@ -11,11 +11,11 @@ var parametrs = new AttractorParametr()
     CountIteration = 100_000,
     Steap = 0.001f,
 };
-var attractorCalculate = new AttractorCalculate(dynamicSystem);
+var attractorCalculate = new AttractorCriticalCalculation(dynamicSystem);
 
 
 
 var result = attractorCalculate.GetResult(parametrs);
-var mapintAttractor = new AttractorMaping();
+var mapintAttractor = new AttractorCriticalMaping();
 var matrix = mapintAttractor.GetResult(result, new MapingParametr());
 new CreaterImg().Create(matrix);
