@@ -112,4 +112,14 @@ public abstract class DynamicSystem
     /// </summary>
     /// <returns>Вектор для начала интегрирования</returns>
     public abstract Vector3 GetStartVector();
+
+    protected DynamicSystem(string name, params Parametr[] parametrs)
+    {
+        Name = name;
+        _parametrs = new();
+        foreach (var parametr in parametrs)
+        {
+            _parametrs[parametr.Name] = parametr.Value;
+        }
+    }
 }
