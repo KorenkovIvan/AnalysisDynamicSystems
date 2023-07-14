@@ -38,6 +38,8 @@ public class LorenzDynamicSystem: DynamicSystem, INiding
     public override Vector3 GetStartVector() => new(0.01f, 0f, 0f);
     public bool IsCritical(Vector3 startVector, Vector3 endVector)
     {
-        return Fy(startVector) * Fy(endVector) < 0;
+        return Math.Abs(startVector.X) > Math.Sqrt(this[nameof(B)] * (this[nameof(R)] - 1)) 
+               && Math.Abs(startVector.Y) > Math.Sqrt(this[nameof(B)] * (this[nameof(R)] - 1)) 
+               && Fy(startVector) * Fy(endVector) < 0;
     }
 }
