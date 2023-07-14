@@ -1,9 +1,38 @@
-<mxfile host="app.diagrams.net" modified="2023-07-14T10:46:10.756Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" version="21.5.2" etag="wtY27jAQScvM3Bs_DMN0" type="github">
+<mxfile host="app.diagrams.net" modified="2023-07-14T11:05:03.947Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" etag="M70veU6SWfVvd54FtCeE" version="21.5.2" type="github">
   <diagram name="Страница 1" id="SYmpUZaGZst6itGSoUfx">
-    <mxGraphModel>
+    <mxGraphModel dx="1372" dy="828" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="DeftA4tpwH0B00CIsHMF-5" value="Слой Динамической системы" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;startSize=40;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="760" height="200" as="geometry">
+            <mxRectangle x="40" y="40" width="40" height="210" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DeftA4tpwH0B00CIsHMF-1" value="DynamicSystems" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="DeftA4tpwH0B00CIsHMF-5">
+          <mxGeometry x="80" y="40" width="160" height="86" as="geometry" />
+        </mxCell>
+        <mxCell id="DeftA4tpwH0B00CIsHMF-2" value="+ field: type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="DeftA4tpwH0B00CIsHMF-1">
+          <mxGeometry y="26" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="DeftA4tpwH0B00CIsHMF-3" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="DeftA4tpwH0B00CIsHMF-1">
+          <mxGeometry y="52" width="160" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="DeftA4tpwH0B00CIsHMF-4" value="+ method(type): type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="DeftA4tpwH0B00CIsHMF-1">
+          <mxGeometry y="60" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="DeftA4tpwH0B00CIsHMF-6" value="Слой вычисления" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;startSize=40;" vertex="1" parent="1">
+          <mxGeometry x="40" y="280" width="760" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="DeftA4tpwH0B00CIsHMF-7" value="Слой дополнительного вычисления (не обязательный)" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;startSize=40;" vertex="1" parent="1">
+          <mxGeometry x="40" y="520" width="760" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="DeftA4tpwH0B00CIsHMF-8" value="Слой отображения" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;startSize=40;" vertex="1" parent="1">
+          <mxGeometry x="40" y="760" width="760" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="DeftA4tpwH0B00CIsHMF-9" value="Слой визуализации" style="swimlane;horizontal=0;whiteSpace=wrap;html=1;startSize=40;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1000" width="760" height="200" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
