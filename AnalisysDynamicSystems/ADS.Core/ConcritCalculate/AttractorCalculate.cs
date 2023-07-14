@@ -4,7 +4,8 @@ namespace ADS.Core.ConcritCalculate;
 
 public class AttractorCalculate: Calculate<AttractorParametr, AttractorResult>
 {
-
+    private AttractorActCurrentState ActCurrentState;
+    
     public override AttractorResult GetResult(AttractorParametr parametr)
     {
         Vector3 vector = parametr.StartVector ?? CurrentDynamicSystem.GetStartVector();
@@ -22,7 +23,10 @@ public class AttractorCalculate: Calculate<AttractorParametr, AttractorResult>
         {
             vector = CurrentDynamicSystem.GetNextVector(vector, parametr.Steap);
             result.Trajectory[i] = vector;
-
+            
+            var trajectory = result.Trajectory;
+            ActCurrentState?.Invoke(ref trajectory, i);
+            // TODO возможно стоит убрать и поиск границ в отдельный класс
             if (parametr.WithBorders)
             {
                 if (vector.X < result.MinX) result.MinX = vector.X;
@@ -42,6 +46,8 @@ public class AttractorCalculate: Calculate<AttractorParametr, AttractorResult>
     {
     }
 }
+
+public delegate void AttractorActCurrentState(ref Vector3[] trajectory, int index);
 
 public class AttractorParametr
 {
