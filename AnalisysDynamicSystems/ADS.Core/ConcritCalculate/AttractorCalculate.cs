@@ -4,10 +4,11 @@ namespace ADS.Core.ConcritCalculate;
 
 public class AttractorCalculate: Calculate<AttractorParametr, AttractorResult>
 {
-    private AttractorActCurrentState ActCurrentState;
+    public event AttractorActCurrentState ActCurrentState;
     
     public override AttractorResult GetResult(AttractorParametr parametr)
     {
+        var ds = CurrentDynamicSystem;
         Vector3 vector = parametr.StartVector ?? CurrentDynamicSystem.GetStartVector();
         AttractorResult result = new()
         {
@@ -25,7 +26,7 @@ public class AttractorCalculate: Calculate<AttractorParametr, AttractorResult>
             result.Trajectory[i] = vector;
             
             var trajectory = result.Trajectory;
-            ActCurrentState?.Invoke(ref trajectory, i);
+            ActCurrentState?.Invoke(ref trajectory, ref ds, i);
             // TODO возможно стоит убрать и поиск границ в отдельный класс
             if (parametr.WithBorders)
             {
@@ -47,7 +48,7 @@ public class AttractorCalculate: Calculate<AttractorParametr, AttractorResult>
     }
 }
 
-public delegate void AttractorActCurrentState(ref Vector3[] trajectory, int index);
+public delegate void AttractorActCurrentState(ref Vector3[] trajectory, ref DynamicSystem dunamicSystem, int index);
 
 public class AttractorParametr
 {

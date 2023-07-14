@@ -6,8 +6,15 @@ using ADS.Core.ConcritDynamicSystems;
 using ADS.Core.ConcritMaping;
 
 var dynamicSystem = new LorenzDynamicSystem();
-var parametrs = new AttractorParametr();
+var parametrs = new AttractorParametr()
+{
+    CountIteration = 100_000,
+    Steap = 0.001f,
+};
 var attractorCalculate = new AttractorCalculate(dynamicSystem);
+
+
+
 var result = attractorCalculate.GetResult(parametrs);
 var mapintAttractor = new AttractorMaping();
 var matrix = mapintAttractor.GetResult(result, new MapingParametr());

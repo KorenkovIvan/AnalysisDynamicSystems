@@ -12,7 +12,19 @@ public class AttractorMaping: Maping<AttractorResult>
         {
             for (int j = 0; j < parametrs.Height; j++)
             {
-                result[i, j] = (i + j) % 2 == 0 ? Color.White : Color.Aqua;
+                result[i, j] = Color.White;
+            }
+        }
+
+        for (int i = 0; i < attractorResult.Trajectory.Length; i++)
+        {
+            var x = (attractorResult.Trajectory[i].X - attractorResult.MinX) /
+                (attractorResult.MaxX - attractorResult.MinX) * parametrs.Width;
+            var y = (attractorResult.Trajectory[i].Z - attractorResult.MinZ) /
+                (attractorResult.MaxZ - attractorResult.MinZ) * parametrs.Height;
+            if (0 <= x && x < parametrs.Width && 0 <= y && y < parametrs.Height)
+            {
+                result[(int)x, (int)y] = Color.Red;
             }
         }
         
