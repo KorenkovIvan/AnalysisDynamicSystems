@@ -42,4 +42,9 @@ public class LorenzDynamicSystem: DynamicSystem, INiding
                && Math.Abs(startVector.Y) > Math.Sqrt(this[nameof(B)] * (this[nameof(R)] - 1)) 
                && Fy(startVector) * Fy(endVector) < 0;
     }
+
+    public int GetInvariant(Vector3 vector)
+    {
+        return vector.X > 0 ? 1 : 0;
+    }
 }

@@ -5,6 +5,9 @@ using ADS.Core.ConcritCalculate;
 using ADS.Core.ConcritDynamicSystems;
 using ADS.Core.ConcritMaping;
 
+uint a = 0;
+a <<= 1;
+
 var dynamicSystem = new LorenzDynamicSystem();
 var parametrs = new AttractorParametr()
 {

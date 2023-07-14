@@ -50,12 +50,9 @@ public class AttractorCalculate: Calculate<AttractorParametr, AttractorResult>
 
 public delegate void AttractorActCurrentState(ref Vector3[] trajectory, ref DynamicSystem dunamicSystem, int index);
 
-public class AttractorParametr
+public class AttractorParametr: DefaultParametr
 {
-    public Vector3? StartVector { get; set; } = null;
     public uint CountSkipPoints { get; set; }
-    public uint CountIteration { get; set; }
-    public float Steap { get; set; } = 0.001f;
     public bool WithBorders { get; set; } = true;
 }
 
