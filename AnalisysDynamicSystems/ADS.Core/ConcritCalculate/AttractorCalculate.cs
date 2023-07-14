@@ -7,7 +7,7 @@ public class AttractorCalculate: Calculate<AttractorParametr, AttractorResult>
 
     public override AttractorResult GetResult(AttractorParametr parametr)
     {
-        Vector3 vector = CurrentDynamicSystem.GetStartVector();
+        Vector3 vector = parametr.StartVector ?? CurrentDynamicSystem.GetStartVector();
         AttractorResult result = new()
         {
             Trajectory = new Vector3[parametr.CountIteration],
@@ -20,7 +20,18 @@ public class AttractorCalculate: Calculate<AttractorParametr, AttractorResult>
 
         for (int i = 0; i < parametr.CountIteration; i++)
         {
-            result.Trajectory[i] = CurrentDynamicSystem.GetNextVector(vector, parametr.Steap);
+            vector = CurrentDynamicSystem.GetNextVector(vector, parametr.Steap);
+            result.Trajectory[i] = vector;
+
+            if (parametr.WithBorders)
+            {
+                if (vector.X < result.MinX) result.MinX = vector.X;
+                if (vector.Y < result.MinY) result.MinY = vector.Y;
+                if (vector.Z < result.MinZ) result.MinZ = vector.Z;
+                if (vector.X > result.MaxX) result.MaxX = vector.X;
+                if (vector.Y > result.MaxY) result.MaxY = vector.Y;
+                if (vector.Z > result.MaxZ) result.MaxZ = vector.Z;
+            }
         }
 
         return result;
