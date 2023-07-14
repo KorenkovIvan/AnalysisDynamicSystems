@@ -10,7 +10,7 @@ public class CreaterImg
     {
         if (colorsPixels == null) throw new Exception("Not matrix");
 
-        NameImage = NameImage ?? $"D:\\img\\img_{DateTime.Now.ToString("dd_MM_yyyy_mm_ss")}.png";
+        NameImage = NameImage ?? $"img_{DateTime.Now.ToString("dd_MM_yyyy_mm_ss")}.png";
 
         using Image<Rgba32> image = new(colorsPixels.GetLength(0), colorsPixels.GetLength(1));
         image.ProcessPixelRows(accessor =>

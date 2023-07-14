@@ -2,5 +2,5 @@
 
 public abstract class Maping<TResult>
 {
-    public 
+    public abstract Color[,] GetResult(TResult result);
 }
