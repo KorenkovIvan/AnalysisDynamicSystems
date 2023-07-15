@@ -2,6 +2,7 @@
 
 public class NidingMaping: Maping<uint[,]>
 {
+    
     public override Color[,] GetResult(uint[,] attractorResult, MapingParametr parametrs)
     {
         var result = new Color[parametrs.Width, parametrs.Height];
