@@ -6,7 +6,7 @@ namespace ADS.Core;
 /// <summary>
 /// Абстрактный класс Динамической системы размерности 3
 /// </summary>
-public abstract class DynamicSystem
+public abstract class DynamicSystem: ICloneable
 {
     private const string
         MESSAGE_TRY_GET_NOT_HAVE_PARAMETR = "Нет параметра {0} в динамической системы {1}";
@@ -121,5 +121,16 @@ public abstract class DynamicSystem
         {
             _parametrs[parametr.Name] = parametr.Value;
         }
+    }
+
+    public object Clone()
+    {
+        var buff = MemberwiseClone();
+        (buff as DynamicSystem)._parametrs = new();
+        foreach (var parametr in _parametrs)
+        {
+            (buff as DynamicSystem)._parametrs[parametr.Key] = parametr.Value;
+        }
+        return buff;
     }
 }
