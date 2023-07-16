@@ -6,24 +6,24 @@ using ADS.Core.ConcritMaping;
 using ADS.Core.ConcritMaping.MapColor;
 using ADS.Core.OtherCalculation;
 
-var dynamicSystem = new LorenzDynamicSystem();
+var dynamicSystem = new ShimizyMoriokaDynamicSystem();
 var mapParametr = new MapingParametr()
 {
-    Width = 200,
-    Height = 200,
+    Width = 400,
+    Height = 400,
     
-    NameParametrWidth = nameof(LorenzDynamicSystem.R),
-    StartParametrWidth = 5,
-    EndParametrWidth = 120,
+    NameParametrWidth = nameof(ShimizyMoriokaDynamicSystem.Lambda),
+    StartParametrWidth = 0,
+    EndParametrWidth = 2,
     
-    NameParametrHeight = nameof(LorenzDynamicSystem.Sigma),
+    NameParametrHeight = nameof(ShimizyMoriokaDynamicSystem.Alpha),
     StartParametrHeight = 0,
-    EndParametrHeight = 60,
+    EndParametrHeight = 2,
 };
 var parametrs = new NidingParametr()
 {
-    Depth = 8,
-    CountIteration = 100_000,
+    Depth = 12,
+    CountIteration = 1_000_000,
     Steap = 0.01f,
 };
 var attractorCalculate = new NidingCalculation(dynamicSystem);
