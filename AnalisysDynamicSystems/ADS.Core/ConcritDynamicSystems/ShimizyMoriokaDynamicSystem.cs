@@ -40,7 +40,7 @@ public class ShimizyMoriokaDynamicSystem: DynamicSystem, INiding
     public bool IsCritical(Vector3 begit, Vector3 end)
     {
         if (Math.Abs(begit.X) < Math.Sqrt(this[nameof(Alpha)])) return false;
-        return (Fy(begit) * Fx(end)) < 0;
+        return (Fx(begit) * Fx(end)) < 0;
     }
 
     public int GetInvariant(Vector3 vector)

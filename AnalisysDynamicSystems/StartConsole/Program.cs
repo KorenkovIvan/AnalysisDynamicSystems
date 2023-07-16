@@ -4,21 +4,22 @@ using ADS.Core.ConcritCalculate.Niding;
 using ADS.Core.ConcritDynamicSystems;
 using ADS.Core.ConcritMaping;
 using ADS.Core.ConcritMaping.MapColor;
+using ADS.Core.ConsoleWriter;
 using ADS.Core.OtherCalculation;
 
 var dynamicSystem = new ShimizyMoriokaDynamicSystem();
 var mapParametr = new MapingParametr()
 {
-    Width = 400,
-    Height = 400,
+    Width = 100,
+    Height = 100,
     
     NameParametrWidth = nameof(ShimizyMoriokaDynamicSystem.Lambda),
-    StartParametrWidth = 0,
-    EndParametrWidth = 2,
+    StartParametrWidth = 0f,
+    EndParametrWidth = 2f,
     
     NameParametrHeight = nameof(ShimizyMoriokaDynamicSystem.Alpha),
-    StartParametrHeight = 0,
-    EndParametrHeight = 2,
+    StartParametrHeight = 0f,
+    EndParametrHeight = 2f,
 };
 var parametrs = new NidingParametr()
 {
@@ -28,8 +29,8 @@ var parametrs = new NidingParametr()
 };
 var attractorCalculate = new NidingCalculation(dynamicSystem);
 
-
-
+var _consoleWriter = new DefaultConsoleWriter();
+ParallelMapCalculate.OnCloseRow += _consoleWriter.Write;
 var result = ParallelMapCalculate.GetMap(attractorCalculate, parametrs, mapParametr);
 var mapintAttractor = new NidingMaping(new DefaultNidingMapColor());
 var matrix = mapintAttractor.GetResult(result, mapParametr);
