@@ -14,7 +14,43 @@ namespace ADS.Core.ConcritCalculate.Attractor
 
         public override LyapynovAttractorResult GetResult(AttractorParametr parametr)
         {
-            throw new NotImplementedException();
+            var ds = CurrentDynamicSystem;
+            var eps = 0.01f;
+            Vector3
+                vector = parametr.StartVector ?? CurrentDynamicSystem.GetStartVector(),
+                closeVector = vector + new Vector3(eps, 0, 0);
+            LyapynovAttractorResult result = new()
+            {
+                Trajectory = new Vector3[parametr.CountIteration],
+                Ecu = new Vector3[parametr.CountIteration],
+            };
+
+            for (int i = 0; i < parametr.CountSkipPoints; i++)
+            {
+                vector = CurrentDynamicSystem.GetNextVector(vector, parametr.Steap);
+            }
+
+            for (int i = 0; i < parametr.CountIteration; i++)
+            {
+                vector = CurrentDynamicSystem.GetNextVector(vector, parametr.Steap);
+                closeVector = CurrentDynamicSystem.GetNextVector(closeVector, parametr.Steap);
+                result.Trajectory[i] = vector;
+                result.Ecu[i] = closeVector - vector;
+
+                closeVector = vector + Vector3.Normalize(closeVector - vector) * eps;
+
+                if (parametr.WithBorders)
+                {
+                    if (vector.X < result.MinX) result.MinX = vector.X;
+                    if (vector.Y < result.MinY) result.MinY = vector.Y;
+                    if (vector.Z < result.MinZ) result.MinZ = vector.Z;
+                    if (vector.X > result.MaxX) result.MaxX = vector.X;
+                    if (vector.Y > result.MaxY) result.MaxY = vector.Y;
+                    if (vector.Z > result.MaxZ) result.MaxZ = vector.Z;
+                }
+            }
+
+            return result;
         }
     }
 
