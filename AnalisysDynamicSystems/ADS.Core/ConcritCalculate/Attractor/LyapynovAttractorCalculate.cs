@@ -23,6 +23,7 @@ namespace ADS.Core.ConcritCalculate.Attractor
             {
                 Trajectory = new Vector3[parametr.CountIteration],
                 Ecu = new Vector3[parametr.CountIteration],
+                Eps = eps,
             };
 
             for (int i = 0; i < parametr.CountSkipPoints; i++)
@@ -57,5 +58,6 @@ namespace ADS.Core.ConcritCalculate.Attractor
     public class LyapynovAttractorResult: AttractorResult
     {
         public Vector3[] Ecu { get; set; }
+        public float Eps { get; set; }
     }
 }
