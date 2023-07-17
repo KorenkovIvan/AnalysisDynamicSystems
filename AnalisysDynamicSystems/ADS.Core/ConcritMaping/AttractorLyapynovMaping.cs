@@ -30,7 +30,7 @@ namespace ADS.Core.ConcritMaping
                     (attractorResult.MaxZ - attractorResult.MinZ) * parametrs.Height;
                 if (0 <= x && x < parametrs.Width && 0 <= y && y < parametrs.Height)
                 {
-                    var buff = attractorResult.Ecu[i].Length() / attractorResult.Eps > 0;
+                    var buff = attractorResult.Ecu[i].Length() / attractorResult.Eps > 1;
 
                     result[(int)x, (int)y] = buff ?
                         new Color(new Vector4(1f, 0f, 0f, 1f)) :
