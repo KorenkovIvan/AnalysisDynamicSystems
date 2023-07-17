@@ -1,4 +1,4 @@
-﻿using ADS.Core.ConcritCalculate;
+﻿using ADS.Core.ConcritCalculate.Attractor;
 
 namespace ADS.Core.ConcritMaping;
 

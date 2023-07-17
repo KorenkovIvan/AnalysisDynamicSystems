@@ -1,11 +1,11 @@
 ﻿using System.Numerics;
 
-namespace ADS.Core.ConcritCalculate;
+namespace ADS.Core.ConcritCalculate.Attractor;
 
-public class AttractorCalculate: Calculate<AttractorParametr, AttractorResult>
+public class AttractorCalculate : Calculate<AttractorParametr, AttractorResult>
 {
     public event AttractorActCurrentState ActCurrentState;
-    
+
     public override AttractorResult GetResult(AttractorParametr parametr)
     {
         var ds = CurrentDynamicSystem;
@@ -14,7 +14,7 @@ public class AttractorCalculate: Calculate<AttractorParametr, AttractorResult>
         {
             Trajectory = new Vector3[parametr.CountIteration],
         };
-        
+
         for (int i = 0; i < parametr.CountSkipPoints; i++)
         {
             vector = CurrentDynamicSystem.GetNextVector(vector, parametr.Steap);
@@ -24,7 +24,7 @@ public class AttractorCalculate: Calculate<AttractorParametr, AttractorResult>
         {
             vector = CurrentDynamicSystem.GetNextVector(vector, parametr.Steap);
             result.Trajectory[i] = vector;
-            
+
             var trajectory = result.Trajectory;
             ActCurrentState?.Invoke(ref trajectory, ref ds, i);
             // TODO возможно стоит убрать и поиск границ в отдельный класс
@@ -42,7 +42,7 @@ public class AttractorCalculate: Calculate<AttractorParametr, AttractorResult>
         return result;
     }
 
-    public AttractorCalculate(DynamicSystem dynamicSystem) 
+    public AttractorCalculate(DynamicSystem dynamicSystem)
         : base(dynamicSystem)
     {
     }
@@ -50,7 +50,7 @@ public class AttractorCalculate: Calculate<AttractorParametr, AttractorResult>
 
 public delegate void AttractorActCurrentState(ref Vector3[] trajectory, ref DynamicSystem dunamicSystem, int index);
 
-public class AttractorParametr: DefaultParametr
+public class AttractorParametr : DefaultParametr
 {
     public uint CountSkipPoints { get; set; }
     public bool WithBorders { get; set; } = true;
