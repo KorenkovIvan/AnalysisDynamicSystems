@@ -1,14 +1,9 @@
 ﻿using ADS.Core.ConcritCalculate.Attractor;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ADS.Core.ConcritMaping
 {
-    public class AttractorLyapynovMaping : Maping<LyapynovAttractorResult>
+    public class AttractorEcuMaping: Maping<LyapynovAttractorResult>
     {
         public override Color[,] GetResult(LyapynovAttractorResult attractorResult, MapingParametr parametrs)
         {
@@ -36,11 +31,12 @@ namespace ADS.Core.ConcritMaping
                     (attractorResult.MaxZ - attractorResult.MinZ) * parametrs.Height;
                 if (0 <= x && x < parametrs.Width && 0 <= y && y < parametrs.Height)
                 {
-                    var buff = attractorResult.Ecu[i].Length() / attractorResult.Eps;
-
-                    result[(int)x, (int)y] = buff > 1 ?
-                        new Color(new Vector4((buff - 1)/max, 0.5f, 0f, 1f)) :
-                        new Color(new Vector4(0f, 0f, (buff - 1)/min, 1f));
+                    var buff = Vector3.Normalize(attractorResult.Trajectory[i]);
+                    result[(int)x, (int)y] = new Color(new Vector4(
+                        (buff.X + 1) / 2,
+                        (buff.Y + 1) / 2,
+                        (buff.Z + 1) / 2, 
+                        1f));
                 }
             }
 
