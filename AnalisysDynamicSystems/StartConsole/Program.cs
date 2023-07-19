@@ -26,7 +26,7 @@ var mapParametr = new MapingParametr()
 
 var dynamicSystem = new LorenzDynamicSystem();
 var calculate = new LyapynovAttractorCalculate(dynamicSystem);
-var maper = new AttractorLyapynovMaping();
+var maper = new AttractorEcuMaping();
 var result = calculate.GetResult(new AttractorParametr()
 {
     CountIteration = 1_000_000,

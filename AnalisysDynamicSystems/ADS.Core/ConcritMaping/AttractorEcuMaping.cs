@@ -31,10 +31,10 @@ namespace ADS.Core.ConcritMaping
                     (attractorResult.MaxZ - attractorResult.MinZ) * parametrs.Height;
                 if (0 <= x && x < parametrs.Width && 0 <= y && y < parametrs.Height)
                 {
-                    var buff = Vector3.Normalize(attractorResult.Trajectory[i]);
+                    var buff = Vector3.Normalize(attractorResult.Ecu[i]);
                     result[(int)x, (int)y] = new Color(new Vector4(
-                        (buff.X + 1) / 2,
                         (buff.Y + 1) / 2,
+                        (buff.X + 1) / 2,
                         (buff.Z + 1) / 2, 
                         1f));
                 }
