@@ -10,7 +10,7 @@ namespace ADS.Core.ConcritCalculate.Lyapynov
 {
     internal class LypynovStability : Calculate<ParametrLypynovStability, ResultLypynovStability>
     {
-        public LypynovStability(DynamicSystem dynamicSystem) 
+        public LypynovStability(DynamicSystem dynamicSystem)
             : base(dynamicSystem) { }
 
         public override ResultLypynovStability GetResult(ParametrLypynovStability parametr)
@@ -20,11 +20,11 @@ namespace ADS.Core.ConcritCalculate.Lyapynov
 
             for (int x = 0; x <= parametr.Greed + 1; x++)
             {
-                for(int y = 0; y <= parametr.Greed + 1; y++)
+                for (int y = 0; y <= parametr.Greed + 1; y++)
                 {
-                    for(int z = 0; z <= parametr.Greed + 1; z++)
+                    for (int z = 0; z <= parametr.Greed + 1; z++)
                     {
-                        if((new int[] { x, y, z }).Any(d => d == 0 || d == parametr.Greed + 1))
+                        if ((new int[] { x, y, z }).Any(d => d == 0 || d == parametr.Greed + 1))
                         {
                             var curentVector = new Vector3(
                                 parametr.Vector.X + x * parametr.Eps / parametr.Greed,
@@ -35,10 +35,10 @@ namespace ADS.Core.ConcritCalculate.Lyapynov
                             var currentResult = (parametr.Vector - curentVector).Length();
                             if (Math.Abs(currentResult - result.Reference) > result.MaxDelta)
                             {
-                                result.MaxDelta = Math.Abs(currentResult - result.Reference);
+                                result.MaxDelta = Math.Abs(currentResult - result.Reference) / (Math.Sqrt(x * x + y * y + z * z) * parametr.Eps);
                             }
                         }
-                        
+
                     }
                 }
             }
@@ -57,7 +57,7 @@ namespace ADS.Core.ConcritCalculate.Lyapynov
 
     public class ResultLypynovStability
     {
-        public float MaxDelta { get; set; } = float.MinValue;
+        public double MaxDelta { get; set; } = float.MinValue;
         public float Reference { get; set; }
     }
 }
