@@ -13,13 +13,27 @@ namespace ADS.Core.ConcritCalculate.Lyapynov
 
         public override ResultLypynovStability GetResult(ParametrLypynovStability parametr)
         {
-            throw new NotImplementedException();
+            var result = new ResultLypynovStability();
+
+            for(int x = 0; x < 10; x++)
+            {
+                for(int y = 0; y < 10;)
+                {
+                    for(int z = 0; z < 10;)
+                    {
+
+                    }
+                }
+            }
+
+            return result;
         }
     }
 
     public class ParametrLypynovStability
     {
-
+        public uint Greed { get; set; } = 0;
+        public float Eps { get; set; } = 0.01f;
     }
 
     public class ResultLypynovStability
