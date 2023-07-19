@@ -6,7 +6,24 @@ using System.Threading.Tasks;
 
 namespace ADS.Core.ConcritCalculate.Lyapynov
 {
-    internal class LypynovStability
+    internal class LypynovStability : Calculate<ParametrLypynovStability, ResultLypynovStability>
     {
+        public LypynovStability(DynamicSystem dynamicSystem) 
+            : base(dynamicSystem) { }
+
+        public override ResultLypynovStability GetResult(ParametrLypynovStability parametr)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class ParametrLypynovStability
+    {
+
+    }
+
+    public class ResultLypynovStability
+    {
+        public float MaxDelta { get; set; }
     }
 }
