@@ -17,4 +17,9 @@ namespace ADS.Core.ConcritCalculate.Mid
             throw new NotImplementedException();
         }
     }
+
+    public class ParametrLongLypynovStability: ParametrLypynovStability
+    {
+        uint CountIntegration { get; set; } = 1_000_000;
+    }
 }
