@@ -36,7 +36,7 @@ namespace ADS.Core.ConcritCalculate.Lyapynov
 
                             if (Math.Abs(currentResult - result.Reference) > result.MaxDelta)
                             {
-                                result.MaxDelta = Math.Abs(currentResult - result.Reference);// / Math.Sqrt(x * x + y * y + z * z) * parametr.Eps;
+                                result.MaxDelta = Math.Abs(currentResult - result.Reference);
                             }
                         }
 

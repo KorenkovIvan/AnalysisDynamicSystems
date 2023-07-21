@@ -9,12 +9,31 @@ using ADS.Core.ConcritMaping.MapColor;
 using ADS.Core.ConsoleWriter;
 using ADS.Core.OtherCalculation;
 
+var mapParametr = new MapingParametr()
+{
+    Width = 800,
+    Height = 800,
+
+    NameParametrWidth = nameof(ShimizyMoriokaDynamicSystem.Lambda),
+    StartParametrWidth = 0f,
+    EndParametrWidth = 2f,
+
+    NameParametrHeight = nameof(ShimizyMoriokaDynamicSystem.Alpha),
+    StartParametrHeight = 0f,
+    EndParametrHeight = 2f,
+
+
+};
+
 var dynamicSystem = new LorenzDynamicSystem();
-var calculate = new LyapynovStabilityCalculate(dynamicSystem);
-var result = calculate.GetResult(new ParametrLongLypynovStability());
-
-Console.WriteLine(result.MaxDelta);
-
+var calculate = new LyapynovAttractorCalculate(dynamicSystem);
+var result = calculate.GetResult(new AttractorParametr() 
+{ 
+    CountIteration = 1_000_000
+});
+var maper = new NavigationLyapynovAttractor();
+var matrix = maper.GetResult(result, mapParametr);
+new CreaterImg().Create(matrix);
 //var mapParametr = new MapingParametr()
 //{
 //    Width = 800,

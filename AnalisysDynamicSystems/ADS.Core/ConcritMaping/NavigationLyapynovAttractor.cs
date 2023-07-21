@@ -27,20 +27,24 @@ namespace ADS.Core.ConcritMaping
                 .Select(Vector3.Normalize)
                 .ToArray();
 
-            var maxX = buff.Select(v => Math.Asin(v.X)).Max();
-            var minX = buff.Select(v => Math.Asin(v.X)).Min();
+            var maxX = buff.Select(v => Math.Atan(v.X / v.Y)).Max();
+            var minX = buff.Select(v => Math.Atan(v.X / v.Y)).Min();
 
-            var maxY = buff.Select(v => Math.Asin(v.Y)).Max();
-            var minY = buff.Select(v => Math.Asin(v.Y)).Min();
+            var maxY = buff.Select(v => Math.Acos(v.Z)).Max();
+            var minY = buff.Select(v => Math.Acos(v.Z)).Min();
 
             for (int i = 0; i < attractorResult.Trajectory.Length; i++)
             {
-                var x = (Math.Asin(buff[i].X) - minX)/(maxX - minX) * parametrs.Width;
-                var y = (Math.Asin(buff[i].Y) - minY)/(maxY - minY) * parametrs.Height;
+                var x = (Math.Atan(buff[i].X / buff[i].Y) - minX)/(maxX - minX) * parametrs.Width;
+                var y = (Math.Acos(buff[i].Z) - minY)/(maxY - minY) * parametrs.Height;
 
                 if (0 <= x && x < parametrs.Width && 0 <= y && y < parametrs.Height)
                 {
                     result[(int)x, (int)y] = Color.Red;
+                }
+                else
+                {
+                    x = x;
                 }
             }
 
