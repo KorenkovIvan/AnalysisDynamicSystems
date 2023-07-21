@@ -1,4 +1,5 @@
 ﻿using ADS.Core.ConcritCalculate.Attractor;
+using ADS.Core.MathCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,16 +36,12 @@ namespace ADS.Core.ConcritMaping
 
             for (int i = 0; i < attractorResult.Trajectory.Length; i++)
             {
-                var x = (Math.Atan(buff[i].X / buff[i].Y) - minX)/(maxX - minX) * parametrs.Width;
-                var y = (Math.Acos(buff[i].Z) - minY)/(maxY - minY) * parametrs.Height;
+                var x = Normalithate.GetNormMap(Math.Atan(buff[i].X / buff[i].Y)/2, -Math.PI/2, Math.PI / 2, parametrs.Width);
+                var y = Normalithate.GetNormMap((Math.Acos(buff[i].Z) - Math.PI / 2) / 2, -Math.PI / 2, Math.PI / 2, parametrs.Width);
 
                 if (0 <= x && x < parametrs.Width && 0 <= y && y < parametrs.Height)
                 {
                     result[(int)x, (int)y] = Color.Red;
-                }
-                else
-                {
-                    x = x;
                 }
             }
 

@@ -11,8 +11,8 @@ using ADS.Core.OtherCalculation;
 
 var mapParametr = new MapingParametr()
 {
-    Width = 800,
-    Height = 800,
+    Width = 400,
+    Height = 400,
 
     NameParametrWidth = nameof(ShimizyMoriokaDynamicSystem.Lambda),
     StartParametrWidth = 0f,

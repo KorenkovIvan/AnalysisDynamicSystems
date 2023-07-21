@@ -9,7 +9,7 @@ namespace ADS.Core.MathCore
 {
     public static class Normalithate
     {
-        public static float GetNormMap(float value, float Max, float Min, int Size)
+        public static double GetNormMap(double value, double Max, double Min, uint Size)
         {
             return (value - Min) / (Max - Min) * Size;
         }
