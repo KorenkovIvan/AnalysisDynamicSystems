@@ -17,7 +17,7 @@ namespace ADS.Core.ConcritCalculate.Lyapynov
         {
             var result = new ResultLypynovStability();
             result.Reference = (parametr.Vector - CurrentDynamicSystem.GetNextVector(parametr.Vector, parametr.Steap)).Length();
-            var max = double.MinValue;
+
             for (int x = 0; x <= parametr.Greed + 1; x++)
             {
                 for (int y = 0; y <= parametr.Greed + 1; y++)
@@ -33,16 +33,17 @@ namespace ADS.Core.ConcritCalculate.Lyapynov
 
                             curentVector = CurrentDynamicSystem.GetNextVector(curentVector, parametr.Steap);
                             var currentResult = (parametr.Vector - curentVector).Length();
-                            if (Math.Abs(currentResult - result.Reference) - result.MaxDelta > max)
+
+                            if (Math.Abs(currentResult - result.Reference) > result.MaxDelta)
                             {
-                                max = Math.Abs(currentResult - result.Reference) - result.MaxDelta;// / Math.Sqrt(x * x + y * y + z * z) * parametr.Eps;
+                                result.MaxDelta = Math.Abs(currentResult - result.Reference);// / Math.Sqrt(x * x + y * y + z * z) * parametr.Eps;
                             }
                         }
 
                     }
                 }
             }
-            result.MaxDelta = max;
+
             return result;
         }
     }
