@@ -1,8 +1,10 @@
-﻿using System.Numerics;
+﻿using System.ComponentModel;
+using System.Numerics;
 using ADS.Core.ConcritCalculate.Niding;
 
 namespace ADS.Core.ConcritDynamicSystems;
 
+[DisplayName("Система Лорнеца")]
 public class LorenzDynamicSystem: DynamicSystem, INiding
 {
     private const string NAME_DYNAMIC_SYSTEM 
