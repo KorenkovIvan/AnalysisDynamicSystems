@@ -12,11 +12,12 @@ namespace ADS.Core
     {
         public static string GetDisplayNameAttribute(Type type)
         {
-            MemberInfo property = type.GetProperty("Name");
-
-            var attribute = property.GetCustomAttributes(typeof(DisplayNameAttribute), true)
-                  .Cast<DisplayNameAttribute>().Single();
-            return attribute.DisplayName ?? "have'n name";
+            var attribytes = type
+                .GetCustomAttributes(false);
+            var result = attribytes
+                .Where(a => a is DisplayNameAttribute)
+                .FirstOrDefault() as DisplayNameAttribute;
+            return result?.DisplayName ?? "have'n name";
         }
     }
 }
