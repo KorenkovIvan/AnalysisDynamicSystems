@@ -329,7 +329,7 @@ export default () => {
             avatarProps={{
               src: 'https://gw.alipayobjects.com/zos/antfincdn/efFD%24IOql2/weixintupian_20170331104822.jpg',
               size: 'small',
-              title: '七妮妮',
+              title: '1111111111111111',
               render: (props, dom) => {
                 return (
                   <Dropdown
@@ -338,7 +338,7 @@ export default () => {
                         {
                           key: 'logout',
                           icon: <LogoutOutlined />,
-                          label: '退出登录',
+                          label: '2222222222',
                         },
                       ],
                     }}
@@ -439,20 +439,6 @@ export default () => {
                 <div />
               </ProCard>
             </PageContainer>
-
-            <SettingDrawer
-              pathname={pathname}
-              enableDarkTheme
-              getContainer={(e: any) => {
-                if (typeof window === 'undefined') return e;
-                return document.getElementById('test-pro-layout');
-              }}
-              settings={settings}
-              onSettingChange={(changeSetting) => {
-                setSetting(changeSetting);
-              }}
-              disableUrlParams={false}
-            />
           </ProLayout>
         </ConfigProvider>
       </ProConfigProvider>

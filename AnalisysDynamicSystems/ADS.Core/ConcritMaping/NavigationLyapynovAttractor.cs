@@ -36,8 +36,8 @@ namespace ADS.Core.ConcritMaping
 
             for (int i = 0; i < attractorResult.Trajectory.Length; i++)
             {
-                var x = Normalithate.GetNormMap(Math.Atan(buff[i].X / buff[i].Y)/2, -Math.PI/2, Math.PI / 2, parametrs.Width);
-                var y = Normalithate.GetNormMap((Math.Acos(buff[i].Z) - Math.PI / 2) / 2, -Math.PI / 2, Math.PI / 2, parametrs.Width);
+                var x = Normalithate.GetNormMap(Math.Atan(buff[i].X / buff[i].Y), -Math.PI/2, Math.PI / 2, parametrs.Width);
+                var y = Normalithate.GetNormMap((Math.Acos(buff[i].Z) - Math.PI / 2), -Math.PI / 2, Math.PI / 2, parametrs.Width);
 
                 if (0 <= x && x < parametrs.Width && 0 <= y && y < parametrs.Height)
                 {
