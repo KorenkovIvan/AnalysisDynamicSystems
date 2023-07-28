@@ -33,19 +33,19 @@ import {
               routes: [
                 {
                   path: 'sub-sub-page1',
-                  name: '一一级列表页面',
+                  name: 'карта 1',
                   icon: <CrownFilled />,
                   component: './Welcome',
                 },
                 {
                   path: 'sub-sub-page2',
-                  name: '一二级列表页面',
+                  name: 'карта 2',
                   icon: <CrownFilled />,
                   component: './Welcome',
                 },
                 {
                   path: 'sub-sub-page3',
-                  name: '一三级列表页面',
+                  name: 'карта 3',
                   icon: <CrownFilled />,
                   component: './Welcome',
                 },
@@ -58,19 +58,19 @@ import {
               routes: [
                 {
                   path: 'sub-sub-page1',
-                  name: '一一级列表页面',
+                  name: 'аттрактор 1',
                   icon: <CrownFilled />,
                   component: './Welcome',
                 },
                 {
                   path: 'sub-sub-page2',
-                  name: '一二级列表页面',
+                  name: 'аттрактор 2',
                   icon: <CrownFilled />,
                   component: './Welcome',
                 },
                 {
                   path: 'sub-sub-page3',
-                  name: '一三级列表页面',
+                  name: 'аттрактор 3',
                   icon: <CrownFilled />,
                   component: './Welcome',
                 },
@@ -83,19 +83,19 @@ import {
               routes: [
                 {
                   path: 'sub-sub-page1',
-                  name: '一一级列表页面',
+                  name: 'вычисления 1',
                   icon: <CrownFilled />,
                   component: './Welcome',
                 },
                 {
                   path: 'sub-sub-page2',
-                  name: '一二级列表页面',
+                  name: 'вычисления 2',
                   icon: <CrownFilled />,
                   component: './Welcome',
                 },
                 {
                   path: 'sub-sub-page3',
-                  name: '一三级列表页面',
+                  name: 'вычисления 3',
                   icon: <CrownFilled />,
                   component: './Welcome',
                 },

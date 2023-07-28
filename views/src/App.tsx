@@ -61,7 +61,7 @@ const List: React.FC<{ title: string; style?: React.CSSProperties }> = (
   props,
 ) => {
   const { token } = theme.useToken();
-
+  debugger;
   return (
     <div
       style={{
@@ -96,6 +96,7 @@ const List: React.FC<{ title: string; style?: React.CSSProperties }> = (
 
 const MenuCard = () => {
   const { token } = theme.useToken();
+  debugger;
   return (
     <div
       style={{
@@ -220,6 +221,7 @@ const MenuCard = () => {
 
 const SearchInput = () => {
   const { token } = theme.useToken();
+  debugger;
   return (
     <div
       key="SearchOutlined"
@@ -329,7 +331,7 @@ export default () => {
             avatarProps={{
               src: 'https://gw.alipayobjects.com/zos/antfincdn/efFD%24IOql2/weixintupian_20170331104822.jpg',
               size: 'small',
-              title: '1111111111111111',
+              title: '11',
               render: (props, dom) => {
                 return (
                   <Dropdown
@@ -338,7 +340,7 @@ export default () => {
                         {
                           key: 'logout',
                           icon: <LogoutOutlined />,
-                          label: '2222222222',
+                          label: '222',
                         },
                       ],
                     }}
@@ -351,6 +353,7 @@ export default () => {
             actionsRender={(props) => {
               if (props.isMobile) return [];
               if (typeof window === 'undefined') return [];
+              debugger;
               return [
                 props.layout !== 'side' && document.body.clientWidth > 1400 ? (
                   <SearchInput />
@@ -364,7 +367,7 @@ export default () => {
               const defaultDom = (
                 <a>
                   {logo}
-                  {title}
+                  'Анализ динамических систем'
                 </a>
               );
               if (typeof window === 'undefined') return defaultDom;
@@ -379,20 +382,20 @@ export default () => {
                 </>
               );
             }}
-            menuFooterRender={(props) => {
-              if (props?.collapsed) return undefined;
-              return (
-                <div
-                  style={{
-                    textAlign: 'center',
-                    paddingBlockStart: 12,
-                  }}
-                >
-                  <div>© 2021 Made with love</div>
-                  <div>by Ant Design</div>
-                </div>
-              );
-            }}
+            // menuFooterRender={(props) => {
+            //   if (props?.collapsed) return undefined;
+            //   return (
+            //     <div
+            //       style={{
+            //         textAlign: 'center',
+            //         paddingBlockStart: 12,
+            //       }}
+            //     >
+            //       <div>© 2021 Made with love</div>
+            //       <div>by Ant Design</div>
+            //     </div>
+            //   );
+            // }}
             onMenuHeaderClick={(e) => console.log(e)}
             menuItemRender={(item, dom) => (
               <div
@@ -408,34 +411,12 @@ export default () => {
             <PageContainer
               token={{
                 paddingInlinePageContainerContent: num,
-              }}
-              extra={[
-                <Button key="3">操作</Button>,
-                <Button key="2">操作</Button>,
-                <Button
-                  key="1"
-                  type="primary"
-                  onClick={() => {
-                    setNum(num > 0 ? 0 : 40);
-                  }}
-                >
-                  主操作
-                </Button>,
-              ]}
-              subTitle="简单的描述"
-              footer={[
-                <Button key="3">重置</Button>,
-                <Button key="2" type="primary">
-                  提交
-                </Button>,
-              ]}
-            >
+              }}>
               <ProCard
                 style={{
-                  height: '200vh',
-                  minHeight: 800,
-                }}
-              >
+                  height: '200',
+                  minHeight: 100,
+                }}>
                 <div />
               </ProCard>
             </PageContainer>
