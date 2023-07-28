@@ -1,13 +1,14 @@
-﻿using System.Numerics;
+﻿using System.ComponentModel;
+using System.Numerics;
 using ADS.Core.ConcritCalculate.Niding;
+using ADS.Core.DataAnnotations;
 
 namespace ADS.Core.ConcritDynamicSystems;
 
+[DisplayName("Система Шимицу-Мориока")]
+[AdsHidden(false)]
 public class ShimizyMoriokaDynamicSystem: DynamicSystem, INiding
 {
-    private const string NAME_DYNAMIC_SYSTEM 
-        = "Система Шимицу-Мориока";
-
     #region Дефолтное значение параметров
 
     public static readonly Parametr Lambda = new()
@@ -24,7 +25,7 @@ public class ShimizyMoriokaDynamicSystem: DynamicSystem, INiding
     #endregion
     
     public ShimizyMoriokaDynamicSystem() 
-        : base(NAME_DYNAMIC_SYSTEM, Lambda, Alpha) { }
+        : base(Lambda, Alpha) { }
     public override float Fx(Vector3 v) 
         => v.Y;
     public override float Fy(Vector3 v) 

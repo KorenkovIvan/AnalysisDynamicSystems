@@ -1,15 +1,14 @@
 ﻿using System.ComponentModel;
 using System.Numerics;
 using ADS.Core.ConcritCalculate.Niding;
+using ADS.Core.DataAnnotations;
 
 namespace ADS.Core.ConcritDynamicSystems;
 
 [DisplayName("Система Лорнеца")]
+[AdsHidden(false)]
 public class LorenzDynamicSystem: DynamicSystem, INiding
 {
-    private const string NAME_DYNAMIC_SYSTEM 
-        = "Система Лорнеца";
-
     #region Дефолтное значение параметров
 
     public static readonly Parametr Sigma = new()
@@ -31,7 +30,7 @@ public class LorenzDynamicSystem: DynamicSystem, INiding
     #endregion
     
     public LorenzDynamicSystem() 
-        : base(NAME_DYNAMIC_SYSTEM, Sigma, R, B) { }
+        : base(Sigma, R, B) { }
 
     public override float Fx(Vector3 vector) => this[nameof(Sigma)] * (vector.Y - vector.X);
     public override float Fy(Vector3 vector) => vector.X * (this[nameof(R)] - vector.Z) - vector.Y;

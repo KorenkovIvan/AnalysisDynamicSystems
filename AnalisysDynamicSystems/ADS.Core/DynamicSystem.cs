@@ -10,11 +10,6 @@ public abstract class DynamicSystem: ICloneable
 {
     private const string
         MESSAGE_TRY_GET_NOT_HAVE_PARAMETR = "Нет параметра {0} в динамической системы {1}";
-    /// <summary>
-    /// Наименование Динамической системы
-    /// </summary>
-    public string Name { get; set; }
-
     #region Параметры
 
     private Dictionary<string, float> _parametrs;
@@ -28,7 +23,7 @@ public abstract class DynamicSystem: ICloneable
             }
             else
             {
-                throw new ConstraintException(string.Format(MESSAGE_TRY_GET_NOT_HAVE_PARAMETR, parametrName, Name));
+                throw new ConstraintException(string.Format(MESSAGE_TRY_GET_NOT_HAVE_PARAMETR, parametrName, CoreProgramm.GetDisplayNameAttribute(GetType())));
             }
         }
         set
@@ -39,7 +34,7 @@ public abstract class DynamicSystem: ICloneable
             }
             else
             {
-                throw new ConstraintException(string.Format(MESSAGE_TRY_GET_NOT_HAVE_PARAMETR, parametrName, Name));
+                throw new ConstraintException(string.Format(MESSAGE_TRY_GET_NOT_HAVE_PARAMETR, parametrName, CoreProgramm.GetDisplayNameAttribute(GetType())));
             }
         }
     }
@@ -113,9 +108,8 @@ public abstract class DynamicSystem: ICloneable
     /// <returns>Вектор для начала интегрирования</returns>
     public abstract Vector3 GetStartVector();
 
-    protected DynamicSystem(string name, params Parametr[] parametrs)
+    protected DynamicSystem(params Parametr[] parametrs)
     {
-        Name = name;
         _parametrs = new();
         foreach (var parametr in parametrs)
         {

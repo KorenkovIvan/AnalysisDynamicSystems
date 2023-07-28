@@ -1,11 +1,13 @@
-﻿using System.Numerics;
+﻿using ADS.Core.DataAnnotations;
+using System.ComponentModel;
+using System.Numerics;
 
 namespace ADS.Core.ConcritDynamicSystems;
+
+[DisplayName("Простая динамическая система")]
+[AdsHidden(true)]
 public class PastDynamicSystem: DynamicSystem
 {
-    private const string NAME_DYNAMIC_SYSTEM 
-        = "Простая динамическая система";
-
     #region Дефолтное значение параметров
 
     public static readonly Parametr K1 = new()
@@ -37,5 +39,5 @@ public class PastDynamicSystem: DynamicSystem
     public override Vector3 GetStartVector() => new Vector3(1f, 1f, 1f);
 
     public PastDynamicSystem() 
-        : base(NAME_DYNAMIC_SYSTEM, K1, K2, K3) { }
+        : base(K1, K2, K3) { }
 }

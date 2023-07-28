@@ -22,6 +22,7 @@ namespace ADS.WebApp.Controllers
             IEnumerable<string> list = Assembly.GetAssembly(ourtype)
                 .GetTypes()
                 .Where(type => type.IsSubclassOf(ourtype))
+                .Where(t => !CoreProgramm.GetIsHidden(t))
                 .Select(CoreProgramm.GetDisplayNameAttribute);
 
             return list;
