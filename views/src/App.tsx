@@ -28,6 +28,7 @@ import {
 } from 'antd';
 import React, { useState } from 'react';
 import defaultProps from './_defaultProps';
+import { useNavigate } from 'react-router-dom'
 import {
   BrowserRouter as Router,
   Routes,
@@ -287,6 +288,7 @@ export default () => {
   if (typeof document === 'undefined') {
     return <div />;
   }
+  const navigate = useNavigate()
   return (
     <div
       id="test-pro-layout"
@@ -408,12 +410,14 @@ export default () => {
             menuItemRender={(item, dom) => (
               <div
                 onClick={() => {
+                  navigate(item.path || "/", { replace: true })
                   setPathname(item.path || '/welcome');
                 }}
               >
                 {dom}
               </div>
             )}
+
             {...settings}
           >
             <PageContainer
@@ -425,8 +429,8 @@ export default () => {
                   minHeight: 100,
                 }}>
                 <Routes>
-                  <Route path="/" element={<Home />}/>
-                  <Route path="/login" element={<Galery/>}/>
+                  <Route path="/map/map3" element={<Home />}/>
+                  <Route path="/map/map1" element={<Galery/>}/>
                 </Routes>
               </ProCard>
             </PageContainer>

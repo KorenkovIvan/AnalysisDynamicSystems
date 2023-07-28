@@ -15,36 +15,36 @@ import {
       path: '/',
       routes: [
         {
-          path: '/welcome',
+          path: '/home',
           name: 'Домашняя',
           icon: <HomeFilled />,
-          component: './Welcome',
+          component: './Home',
         },
         {
           name: 'Вычисления',
           icon: <CalculatorFilled />,
           path: '/list',
-          component: './ListTableList',
+          component: './calculate',
           routes: [
             {
-              path: '/list/sub-page',
+              path: '/map',
               name: 'Карты',
               icon: <HeatMapOutlined />,
               routes: [
                 {
-                  path: 'sub-sub-page1',
+                  path: 'map1',
                   name: 'карта 1',
                   icon: <CrownFilled />,
                   component: './Welcome',
                 },
                 {
-                  path: 'sub-sub-page2',
+                  path: 'map2',
                   name: 'карта 2',
                   icon: <CrownFilled />,
                   component: './Welcome',
                 },
                 {
-                  path: 'sub-sub-page3',
+                  path: 'map3',
                   name: 'карта 3',
                   icon: <CrownFilled />,
                   component: './Welcome',
