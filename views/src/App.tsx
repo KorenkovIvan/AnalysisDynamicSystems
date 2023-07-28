@@ -28,6 +28,14 @@ import {
 } from 'antd';
 import React, { useState } from 'react';
 import defaultProps from './_defaultProps';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+} from 'react-router-dom';
+import Home from './Pages/Home';
+import Galery from './Pages/Galery';
 
 const Item: React.FC<{ children: React.ReactNode }> = (props) => {
   const { token } = theme.useToken();
@@ -414,10 +422,12 @@ export default () => {
               }}>
               <ProCard
                 style={{
-                  height: '200',
                   minHeight: 100,
                 }}>
-                <div />
+                <Routes>
+                  <Route path="/" element={<Home />}/>
+                  <Route path="/login" element={<Galery/>}/>
+                </Routes>
               </ProCard>
             </PageContainer>
           </ProLayout>
