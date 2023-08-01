@@ -37,6 +37,7 @@ import {
 } from 'react-router-dom';
 import Home from './Pages/Home';
 import Galery from './Pages/Galery';
+import Attractor from './Pages/Attractor';
 
 const Item: React.FC<{ children: React.ReactNode }> = (props) => {
   const { token } = theme.useToken();
@@ -392,20 +393,6 @@ export default () => {
                 </>
               );
             }}
-            // menuFooterRender={(props) => {
-            //   if (props?.collapsed) return undefined;
-            //   return (
-            //     <div
-            //       style={{
-            //         textAlign: 'center',
-            //         paddingBlockStart: 12,
-            //       }}
-            //     >
-            //       <div>© 2021 Made with love</div>
-            //       <div>by Ant Design</div>
-            //     </div>
-            //   );
-            // }}
             onMenuHeaderClick={(e) => console.log(e)}
             menuItemRender={(item, dom) => (
               <div
@@ -430,7 +417,8 @@ export default () => {
                 }}>
                 <Routes>
                   <Route path="/map/map3" element={<Home />}/>
-                  <Route path="/map/map1" element={<Galery/>}/>
+                  <Route path="/map/map2" element={<Attractor />}/>
+                  <Route path="/map/map1" element={<Galery />}/>
                 </Routes>
               </ProCard>
             </PageContainer>
