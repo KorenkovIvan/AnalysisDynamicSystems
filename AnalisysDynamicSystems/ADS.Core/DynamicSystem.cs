@@ -39,6 +39,8 @@ public abstract class DynamicSystem: ICloneable
         }
     }
 
+    public string[] GetParametrs() => _parametrs.Keys.ToArray();
+
     #endregion
 
     /// <summary>
