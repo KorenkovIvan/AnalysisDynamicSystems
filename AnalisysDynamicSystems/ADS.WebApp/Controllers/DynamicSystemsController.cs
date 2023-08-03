@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.DataProtection.KeyManagement;
 using Microsoft.AspNetCore.Mvc;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 
 namespace ADS.WebApp.Controllers
 {
@@ -16,7 +17,7 @@ namespace ADS.WebApp.Controllers
             _logger = logger;
         }
 
-        [HttpGet("GetDynamicSystems")]
+        [HttpGet(nameof(DynamicSystemsController.GetDynamicSystems))]
         public IEnumerable<string> GetDynamicSystems()
         {
             var ourtype = typeof(DynamicSystem);
@@ -29,7 +30,7 @@ namespace ADS.WebApp.Controllers
             return list;
         }
 
-        [HttpGet("GetParametrsDynamicSystems")]
+        [HttpGet(nameof(DynamicSystemsController.GetParametrsDynamicSystems))]
         public IEnumerable<string> GetParametrsDynamicSystems(string dynamicSystemName)
         {
             var ourtype = typeof(DynamicSystem);
@@ -42,6 +43,19 @@ namespace ADS.WebApp.Controllers
             if (type == null) throw new Exception($"Не существует {dynamicSystemName} - динамической системы");
             var ds = Activator.CreateInstance(type) as DynamicSystem;
             return ds.GetParametrs();
+        }
+
+        [HttpGet(nameof(DynamicSystemsController.GetCalculate))]
+        public IEnumerable<string> GetCalculate(string dynamicSystemName)
+        {
+            var ourtype = typeof(Calculate<dynamic, dynamic>);
+            var list = Assembly.GetAssembly(ourtype)
+                .GetTypes()
+                .Where(type => type.IsSubclassOf(ourtype))
+                .Where(t => !CoreProgramm.GetIsHidden(t))
+                .Select(CoreProgramm.GetDisplayNameAttribute);
+
+            return list;
         }
     }
 }
