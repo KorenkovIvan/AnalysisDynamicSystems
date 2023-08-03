@@ -46,14 +46,13 @@ namespace ADS.WebApp.Controllers
         }
 
         [HttpGet(nameof(DynamicSystemsController.GetCalculate))]
-        public IEnumerable<string> GetCalculate(string dynamicSystemName)
+        public IEnumerable<string> GetCalculate()
         {
-            var ourtype = typeof(Calculate<dynamic, dynamic>);
+            var ourtype = typeof(DynamicSystem);
             var list = Assembly.GetAssembly(ourtype)
                 .GetTypes()
-                .Where(type => type.IsSubclassOf(ourtype))
-                .Where(t => !CoreProgramm.GetIsHidden(t))
-                .Select(CoreProgramm.GetDisplayNameAttribute);
+                .Where(CoreProgramm.GetIsAdsResult)
+                .Select(x => x.ToString());
 
             return list;
         }

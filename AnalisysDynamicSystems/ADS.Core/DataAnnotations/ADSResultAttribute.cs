@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ADS.Core.DataAnnotations
 {
-    internal class ADSResultAttribute
+    public class ADSResultAttribute: Attribute
     {
+
     }
 }

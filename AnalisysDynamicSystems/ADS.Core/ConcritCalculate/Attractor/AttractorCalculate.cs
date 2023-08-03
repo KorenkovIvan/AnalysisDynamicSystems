@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+﻿using ADS.Core.DataAnnotations;
+using System.Numerics;
 
 namespace ADS.Core.ConcritCalculate.Attractor;
 
@@ -56,6 +57,7 @@ public class AttractorParametr : DefaultParametr
     public bool WithBorders { get; set; } = true;
 }
 
+[ADSResult]
 public class AttractorResult
 {
     public Vector3[] Trajectory { get; set; }

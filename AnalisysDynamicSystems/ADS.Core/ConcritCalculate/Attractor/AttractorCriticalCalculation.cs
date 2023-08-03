@@ -1,5 +1,6 @@
 ﻿using System.Numerics;
 using ADS.Core.ConcritCalculate.Niding;
+using ADS.Core.DataAnnotations;
 
 namespace ADS.Core.ConcritCalculate.Attractor;
 
@@ -55,6 +56,7 @@ public class AttractorCriticalCalculation : Calculate<AttractorParametr, Attract
         : base(dynamicSystem) { }
 }
 
+[ADSResult]
 public class AttractorCriticalResult : AttractorResult
 {
     public List<int> IndxList { get; set; } = new();

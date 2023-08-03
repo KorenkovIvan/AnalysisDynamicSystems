@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ADS.Core.DataAnnotations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
@@ -56,6 +57,7 @@ namespace ADS.Core.ConcritCalculate.Lyapynov
         public float Steap { get; set; } = 0.01f;
     }
 
+    [ADSResult]
     public class ResultLypynovStability
     {
         public double MaxDelta { get; set; } = float.MinValue;

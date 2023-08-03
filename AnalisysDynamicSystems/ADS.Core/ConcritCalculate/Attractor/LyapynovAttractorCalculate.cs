@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ADS.Core.DataAnnotations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
@@ -55,6 +56,7 @@ namespace ADS.Core.ConcritCalculate.Attractor
         }
     }
 
+    [ADSResult]
     public class LyapynovAttractorResult: AttractorResult
     {
         public Vector3[] Ecu { get; set; }

@@ -30,5 +30,14 @@ namespace ADS.Core
                 .FirstOrDefault() as AdsHiddenAttribute;
             return result?.IsHidden ?? true;
         }
+        public static bool GetIsAdsResult(Type? type)
+        {
+            var attribytes = type?
+                .GetCustomAttributes(false);
+            var result = attribytes?
+                .Where(a => a is ADSResultAttribute)
+                .FirstOrDefault();
+            return result is not null;
+        }
     }
 }
