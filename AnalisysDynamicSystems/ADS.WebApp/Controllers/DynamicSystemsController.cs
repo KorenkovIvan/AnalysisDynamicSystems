@@ -9,6 +9,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System;
 using System.IO;
+using ADS.WebApp.Models.Attractor;
 
 namespace ADS.WebApp.Controllers
 {
@@ -89,28 +90,42 @@ namespace ADS.WebApp.Controllers
             };
         }
 
-        [HttpGet(nameof(DynamicSystemsController.CreateAttractor))]
-        public string CreateAttractor()
+        [HttpPost(nameof(DynamicSystemsController.CreateAttractor))]
+        public string CreateAttractor(AttractorIn attractorIn)
         {
+            var ourtype = typeof(DynamicSystem);
+            var type = Assembly.GetAssembly(ourtype)
+                .GetTypes()
+                .Where(type => type.IsSubclassOf(ourtype))
+                .Where(t => !CoreProgramm.GetIsHidden(t))
+                .Where(t => CoreProgramm.GetDisplayNameAttribute(t) == attractorIn.DynamicSystemName)
+                .FirstOrDefault();
+            if (type == null) throw new Exception($"Не существует {attractorIn.DynamicSystemName} - динамической системы");
+            var dynamicSystem = Activator.CreateInstance(type) as DynamicSystem;
+            
+            foreach(var parametr in attractorIn.Parametrs)
+            {
+                dynamicSystem[parametr.Key] = parametr.Value;
+            }
+
             var mapParametr = new MapingParametr()
             {
-                Width = 400,
-                Height = 400,
+                Width = attractorIn.Width,
+                Height = attractorIn.Height,
 
-                NameParametrWidth = nameof(ShimizyMoriokaDynamicSystem.Lambda),
-                StartParametrWidth = 0f,
-                EndParametrWidth = 2f,
+                NameParametrWidth = default,
+                StartParametrWidth = default,
+                EndParametrWidth = default,
 
-                NameParametrHeight = nameof(ShimizyMoriokaDynamicSystem.Alpha),
-                StartParametrHeight = 0f,
-                EndParametrHeight = 2f,
+                NameParametrHeight = default,
+                StartParametrHeight = default,
+                EndParametrHeight = default,
             };
 
-            var dynamicSystem = new LorenzDynamicSystem();
             var calculate = new AttractorCalculate(dynamicSystem);
             var result = calculate.GetResult(new AttractorParametr()
             {
-                CountIteration = 1_000_000
+                CountIteration = attractorIn.CountIteration
             });
             var mapintAttractor = new AttractorMaping();
             var matrix = mapintAttractor.GetResult(result, mapParametr);
