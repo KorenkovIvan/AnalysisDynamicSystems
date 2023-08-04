@@ -71,7 +71,6 @@ const List: React.FC<{ title: string; style?: React.CSSProperties }> = (
   props,
 ) => {
   const { token } = theme.useToken();
-  debugger;
   return (
     <div
       style={{
@@ -106,7 +105,6 @@ const List: React.FC<{ title: string; style?: React.CSSProperties }> = (
 
 const MenuCard = () => {
   const { token } = theme.useToken();
-  debugger;
   return (
     <div
       style={{
@@ -231,7 +229,6 @@ const MenuCard = () => {
 
 const SearchInput = () => {
   const { token } = theme.useToken();
-  debugger;
   return (
     <div
       key="SearchOutlined"
@@ -364,7 +361,6 @@ export default () => {
             actionsRender={(props) => {
               if (props.isMobile) return [];
               if (typeof window === 'undefined') return [];
-              debugger;
               return [
                 props.layout !== 'side' && document.body.clientWidth > 1400 ? (
                   <SearchInput />

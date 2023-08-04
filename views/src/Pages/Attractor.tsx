@@ -1,17 +1,31 @@
-import { Col, Row } from 'antd';
+import { 
+    Col, 
+    Row, 
+    Select 
+} from 'antd';
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { BaseOptions } from 'vm';
+import type { SelectProps } from 'antd';
+
+const handleChange = (value: string) => {
+    console.log(`selected ${value}`);
+  };
 
 export default () => {
+    const [dynamicSystems, setDynamicSystems] = useState<Array<any>>([]);
 
-    const [per, setPer] = useState<Array<string>>([]);
+    useEffect(() => {
+        axios.get(`https://localhost:7148/DynamicSystems/GetDynamicSystems`)
+        .then(res => {
+            const ds = res.data.map((x : string) => { return {
+                value: x,
+                label: x,
+            }});
+            setDynamicSystems(ds);
+      });}, []);
 
-    var a = axios.get(`https://localhost:7148/DynamicSystems`)
-    .then(res => {
-      const persons = res.data;
-      debugger;
-      setPer(persons);
-    })
+    
 
     return (
         <Row gutter={16}>
@@ -19,8 +33,12 @@ export default () => {
                 <div>col-6</div>
             </Col>
             <Col className="gutter-row" span={6}>
-                <div>col-6</div>
-                <li>{per}</li>
+                <Select
+                    mode="tags"
+                    style={{ width: '100%' }}
+                    placeholder="Динамические системы"
+                    onChange={handleChange}
+                    options={dynamicSystems} />
             </Col>
         </Row>
     );
