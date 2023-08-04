@@ -56,5 +56,31 @@ namespace ADS.WebApp.Controllers
 
             return list;
         }
+
+        [HttpGet(nameof(DynamicSystemsController.GetDynamicSystemInfo))]
+        public DynamicSystemInfo GetDynamicSystemInfo(string dynamicSystemName)
+        {
+            var ourtype = typeof(DynamicSystem);
+            var type = Assembly.GetAssembly(ourtype)
+                .GetTypes()
+                .Where(type => type.IsSubclassOf(ourtype))
+                .Where(t => !CoreProgramm.GetIsHidden(t))
+                .Where(t => CoreProgramm.GetDisplayNameAttribute(t) == dynamicSystemName)
+                .FirstOrDefault();
+            if (type == null) throw new Exception($"Не существует {dynamicSystemName} - динамической системы");
+            var ds = Activator.CreateInstance(type) as DynamicSystem;
+            var list = Assembly.GetAssembly(ourtype)
+                .GetTypes()
+                .Where(CoreProgramm.GetIsAdsResult)
+                .Select(x => x.ToString())
+                .ToList();
+
+            return new DynamicSystemInfo
+            {
+                Name = dynamicSystemName,
+                Parametrs = ds.GetParametrsWithValues(),
+                ListCalculate = list,
+            };
+        }
     }
 }

@@ -40,6 +40,7 @@ public abstract class DynamicSystem: ICloneable
     }
 
     public string[] GetParametrs() => _parametrs.Keys.ToArray();
+    public Dictionary<string, float> GetParametrsWithValues() => _parametrs;
 
     #endregion
 
