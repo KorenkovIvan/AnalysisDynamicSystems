@@ -5,6 +5,7 @@ import {
     Typography,
     Input,
     message,
+    Image,
 } from 'antd';
 import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState } from 'react';
@@ -19,6 +20,7 @@ export default () => {
     const [listDynamicSystems, setListDynamicSystems] = useState<Array<any>>([]);
     const [currentDynamicSystem, setCurrentDynamicSystem] = useState<DynamicSystems | null>(null);
     const [messageApi, contextHolder] = message.useMessage();
+    const [picture, setPicture] = useState("");
     const _parametr: any = {};
 
     useEffect(() => {
@@ -63,7 +65,11 @@ export default () => {
         <Row gutter={16}>
             {contextHolder}
             <Col className="gutter-row" span={18}>
-                <div>col-6</div>
+                <Image
+                    width={'100%'}
+                    height={'100%'}
+                    src={"data:image/png;base64," + picture}
+                />
             </Col>
             <Col className="gutter-row" span={6}>
                 <Select
@@ -81,6 +87,15 @@ export default () => {
                             defaultValue={parametr.Value.toString()}
                             onChange={(e: React.FormEvent<HTMLInputElement>) => onChangeHandler(e, parametr.Name)}
                         />)}
+                </>
+
+                <>
+                    <button
+                        onClick={() => axios.get(`https://localhost:7148/DynamicSystems/CreateAttractor`)
+                            .then(res => {
+                                setPicture(res.data)
+                            })}
+                    >=)</button>
                 </>
             </Col>
         </Row>

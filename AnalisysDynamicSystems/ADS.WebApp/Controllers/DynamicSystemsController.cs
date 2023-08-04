@@ -90,7 +90,7 @@ namespace ADS.WebApp.Controllers
         }
 
         [HttpGet(nameof(DynamicSystemsController.CreateAttractor))]
-        public string CreateAttractor(string dynamicSystemName)
+        public string CreateAttractor()
         {
             var mapParametr = new MapingParametr()
             {
