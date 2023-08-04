@@ -32,11 +32,6 @@ public class CreaterImg
         return NameImage;
     }
 
-    // public string GetBase64(Color[,] colorsPixels, string NameImage = null)
-    //     => Convert.ToBase64String(File.ReadAllBytes(Create(colorsPixels, NameImage)));
-    // public string GetBase64(IVisualisation visualisation, string NameImage = null)
-    //     => Convert.ToBase64String(File.ReadAllBytes(Create(visualisation, NameImage)));
-    //
-    // public string Create(IVisualisation visualisation, string NameImage = null)
-    //     => Create(visualisation.GetMatrix(), NameImage);
+    public string GetBase64(Color[,] colorsPixels, string NameImage = null)
+        => Convert.ToBase64String(File.ReadAllBytes(Create(colorsPixels, NameImage)));
 }
